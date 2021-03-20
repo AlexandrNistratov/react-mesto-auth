@@ -151,7 +151,6 @@ function App() {
         if (jwt) {
             Auth.getContent(jwt)
                 .then((res) => {
-                    // console.log(res)
                     const userData = {
                         email: res.data.email,
                         password: res.data.password
@@ -168,12 +167,10 @@ function App() {
     function handleLogin (email, password) {
         Auth.authorize(email, password)
             .then((data) => {
-                // console.log(data)
                 if (data.token) {
                     localStorage.setItem('jwt', data.token);
+                    setLoggedIn(true)
                     history.push('/');
-                } else {
-                    localStorage.removeItem('jwt', data.token);
                 }
             }).catch(err => console.log(err))
     }
@@ -198,21 +195,17 @@ function App() {
 
     function handleLogout () {
         localStorage.removeItem('jwt');
-        // setUserData({
-        //     email: '',
-        //     password: ''
-        // })
         setLoggedIn(false);
-        history.push('')
+        history.push('/sign-in')
+
     }
 
-    // console.log(userData)
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="App">
                         <Header
                         loggedIn={loggedIn}
-                        handleLogout={handleLogout}
+                        onClick={handleLogout}
                         email={userData}
                         />
                         <Switch>

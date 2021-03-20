@@ -2,8 +2,7 @@ import logo from '../image/logo.svg';
 import React from 'react'
 import { Route, Switch, Link } from 'react-router-dom';
 
-function Header({ handleLogout, email}) {
-    // console.log(email)
+function Header({ onClick, email}) {
     return (
             <header className="header">
                 <img className="header__logo" src={logo} alt="Логотип Mesto" />
@@ -11,7 +10,7 @@ function Header({ handleLogout, email}) {
                         <Route exact path='/'>
                             <nav className="header__nav">
                                 <p className='header__nav-email'>{email.email}</p>
-                                <Link className='header__nav-link' onClick={handleLogout} to="/sign-up">Выход</Link>
+                                <Link className='header__nav-link' onClick={onClick} to="/sign-up">Выйти</Link>
                             </nav>
                         </Route>
                         <Route exact path='/sign-up'>
