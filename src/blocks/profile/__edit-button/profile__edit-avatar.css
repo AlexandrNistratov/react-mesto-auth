@@ -1,0 +1,14 @@
+.profile__edit-avatar {
+  background: url("../../../image/pen-icon.svg") no-repeat 50%; /*url repeat position*/
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border: none;
+  display: none;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
