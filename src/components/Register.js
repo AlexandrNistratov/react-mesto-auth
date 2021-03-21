@@ -1,13 +1,14 @@
 import React from 'react';
+import {Route, Switch, Link} from 'react-router-dom';
 
-function Register ({ handleRegister }) {
+function Register({handleRegister}) {
     const [data, setData] = React.useState({
         regEmail: '',
         regPassword: ''
     });
 
-    function handleChange (e) {
-        const { name, value } = e.target;
+    function handleChange(e) {
+        const {name, value} = e.target;
 
         setData({
             ...data,
@@ -15,14 +16,14 @@ function Register ({ handleRegister }) {
         })
     }
 
-    function handleSubmit (e) {
+    function handleSubmit(e) {
         e.preventDefault();
-        const { regEmail, regPassword } = data;
+        const {regEmail, regPassword} = data;
 
-        handleRegister(regEmail, regPassword );
+        handleRegister(regEmail, regPassword);
     }
 
-    return(
+    return (
         <div className="auth">
             <div className="auth__container">
                 <form className="auth__form"
@@ -35,25 +36,30 @@ function Register ({ handleRegister }) {
                            required
                            minLength="2"
                            maxLength="40"
-                           type="text"
+                           type="email"
                            placeholder="email"
                            name="regEmail"
-                           value={ data.email }
-                           onChange={handleChange} />
+                           value={data.email}
+                           onChange={handleChange}/>
                     <span className="error" id="user-email-error"></span>
                     <input className="auth__input"
                            id="user-password"
                            required
                            minLength="2"
                            maxLength="40"
-                           type="text"
+                           type="password"
+                           suggested="current-password"
                            placeholder="Пароль"
                            name="regPassword"
-                           value={ data.password }
-                           onChange={handleChange} />
+                           value={data.password}
+                           onChange={handleChange}/>
                     <span className="error" id="user-password-error"></span>
                     <button className="auth__submit" type="submit">Зарегистрироваться</button>
-                    <h2 className="auth__subtitle">Уже зарегистрированы? Войти</h2>
+                    <Switch>
+                        <Route exact path='/sign-up'>
+                                <Link className='auth__subtitle' to="/sign-in">Уже зарегистрированы? Войти</Link>
+                        </Route>
+                    </Switch>
                 </form>
             </div>
         </div>

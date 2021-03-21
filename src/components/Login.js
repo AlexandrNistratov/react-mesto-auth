@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Login ({ handleLogin }) {
+function Login({handleLogin}) {
     const [data, setData] = React.useState({
         logEmail: '',
         logPassword: ''
@@ -8,15 +8,15 @@ function Login ({ handleLogin }) {
 
     const [message, setMessage] = React.useState('');
 
-    function handleChange (e) {
-        const { name, value } = e.target;
+    function handleChange(e) {
+        const {name, value} = e.target;
         setData({
             ...data,
             [name]: value
         })
     }
 
-    function handleSubmit (e) {
+    function handleSubmit(e) {
         e.preventDefault();
         if (!data.logEmail || !data.logPassword) {
             return;
@@ -24,7 +24,7 @@ function Login ({ handleLogin }) {
         handleLogin(data.logEmail, data.logPassword);
     }
 
-    return(
+    return (
         <div className="auth">
             <div className="auth__container">
                 <form className="auth__form"
@@ -37,22 +37,23 @@ function Login ({ handleLogin }) {
                            required
                            minLength="2"
                            maxLength="40"
-                           type="text"
+                           type="email"
                            placeholder="email"
                            name="logEmail"
-                           value={ data.email }
-                           onChange={handleChange} />
+                           value={data.email}
+                           onChange={handleChange}/>
                     <span className="error" id="user-email-error">{message}</span>
                     <input className="auth__input"
                            id="user-password"
                            required
                            minLength="2"
                            maxLength="40"
-                           type="text"
+                           type="password"
+                           suggested="current-password"
                            placeholder="Пароль"
                            name="logPassword"
-                           value={ data.password }
-                           onChange={handleChange} />
+                           value={data.password}
+                           onChange={handleChange}/>
                     <span className="error" id="user-password-error">{message}</span>
                     <button className="auth__submit" type="submit">Войти</button>
                 </form>

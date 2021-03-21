@@ -1,7 +1,7 @@
 import React from 'react';
 import PopupWithForm from './PopupWithForm';
 
-function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
+function EditAvatarPopup({isOpen, onClose, onUpdateAvatar}) {
     const avatarRef = React.useRef();
 
     function handleSubmit(e) {
@@ -14,12 +14,12 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
     }
 
     React.useEffect(() => {
-        if(isOpen){
+        if (isOpen) {
             avatarRef.current.value = '';
         }
-    },[isOpen])
+    }, [isOpen])
 
-    return(
+    return (
         <PopupWithForm
             name="avatar-edit"
             container="avatar-edit"
@@ -31,7 +31,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
             onSubmit={handleSubmit}
         >
             <input type="url" className="popup__input popup__input_avatar-edit" id="link-avatar" required
-                   placeholder="Ссылка на картинку" name="link"  ref={avatarRef} />
+                   placeholder="Ссылка на картинку" name="link" ref={avatarRef}/>
             <span className="error" id="link-avatar-error"></span>
         </PopupWithForm>
     )

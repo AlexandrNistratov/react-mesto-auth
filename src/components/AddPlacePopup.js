@@ -13,14 +13,15 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
             link: newCardLinkRef.current.value
         });
     }
+
     React.useEffect(() => {
-        if(isOpen){
+        if (isOpen) {
             newCardNameRef.current.value = '';
             newCardLinkRef.current.value = '';
         }
-    },[isOpen])
+    }, [isOpen])
 
-    return(
+    return (
         <PopupWithForm
             name="add-image"
             title="Новое место"
@@ -33,11 +34,11 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
         >
             <input className="popup__input popup__input_type_name" id="name-card" required minLength="2"
                    maxLength="30"
-                   type="text" placeholder="Название" name="name" ref={newCardNameRef} />
+                   type="text" placeholder="Название" name="name" ref={newCardNameRef}/>
             <span className="error" id="name-card-error"></span>
             <input type="url" className="popup__input popup__input_type_link" id="link" required
                    placeholder="Ссылка на картинку"
-                   name="link" ref={newCardLinkRef} />
+                   name="link" ref={newCardLinkRef}/>
             <span className="error" id="link-error"></span>
         </PopupWithForm>
     )

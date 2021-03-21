@@ -1,5 +1,5 @@
 import React from 'react'
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import {CurrentUserContext} from '../contexts/CurrentUserContext';
 
 function Card({card, onCardClick, onCardLike, onCardDelete}) {
     const currentUser = React.useContext(CurrentUserContext);
@@ -37,13 +37,13 @@ function Card({card, onCardClick, onCardLike, onCardDelete}) {
             <img className="card__image" src={card.link} alt={card.name}
                  onClick={handleClick}/>
             <button className={cardDeleteButtonClassName}
-            onClick={handleDeleteClick}>
+                    onClick={handleDeleteClick}>
             </button>
             <div className="card__items">
                 <h2 className="card__title">{card.name}</h2>
                 <div className="card__item">
                     <button className={cardLikeButtonClassName}
-                    onClick={handleLikeClick}>
+                            onClick={handleLikeClick}>
                     </button>
                     <p className="card__number-likes">{card.likes.length}</p>
                 </div>

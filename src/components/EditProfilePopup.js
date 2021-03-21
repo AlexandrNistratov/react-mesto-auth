@@ -1,8 +1,8 @@
 import PopupWithForm from './PopupWithForm';
 import React from 'react';
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import {CurrentUserContext} from '../contexts/CurrentUserContext';
 
-function EditProfilePopup({isOpen, onClose, onUpdateUser }) {
+function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
     const [name, setName] = React.useState('');
     const [description, setDescription] = React.useState('');
 
@@ -30,7 +30,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser }) {
         });
     }
 
-    return(
+    return (
         <PopupWithForm
             name="info"
             container="min"
@@ -43,12 +43,13 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser }) {
         >
             <input className="popup__input popup__input_type_firstname" id="user-name" required minLength="2"
                    maxLength="40"
-                   type="text" placeholder="Имя" name="firstname" value={name || ''} onChange={handleChangeName} />
-            <span className="error" id="user-name-error" />
+                   type="text" placeholder="Имя" name="firstname" value={name || ''} onChange={handleChangeName}/>
+            <span className="error" id="user-name-error"/>
             <input className="popup__input popup__input_type_career" id="user-career" required minLength="2"
                    maxLength="200"
-                   type="text" placeholder="Работа" name="career" value={description || ''} onChange={handleChangeDescription} />
-            <span className="error" id="user-career-error" />
+                   type="text" placeholder="Работа" name="career" value={description || ''}
+                   onChange={handleChangeDescription}/>
+            <span className="error" id="user-career-error"/>
         </PopupWithForm>
     )
 }
